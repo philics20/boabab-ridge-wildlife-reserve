@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "boabab_ridge_wildlife_reserve", "boabab_ridge_wildlife_reserve.csproj", "{682E34B8-49CA-4C6E-9915-04DDBD8DF4DE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{682E34B8-49CA-4C6E-9915-04DDBD8DF4DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{682E34B8-49CA-4C6E-9915-04DDBD8DF4DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{682E34B8-49CA-4C6E-9915-04DDBD8DF4DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{682E34B8-49CA-4C6E-9915-04DDBD8DF4DE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4AB34572-9885-4DFF-91D2-A123A07D2C53}
+	EndGlobalSection
+EndGlobal
