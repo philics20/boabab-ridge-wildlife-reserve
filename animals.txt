@@ -1,0 +1,12 @@
+WR-0001|Kopano|Cape Fox|3|14|Critical|Intensive Care Unit
+WR-0002|Ayanda|Sacred Ibis|2|36|Serious|High-Dependency Ward
+WR-0003|Boitumelo|Cape Genet|4|52|Stable|Recovery Ward
+WR-0004|Nandi|Blue Duiker|1|68|Recovering|Outdoor Enclosure
+WR-0005|Tau|Honey Badger|6|93|Release-Ready|Pre-Release Camp
+WR-0006|Lindiwe|African Grey Hornbill|8|27|Serious|High-Dependency Ward
+WR-0007|Kabelo|Spotted Hyena|5|71|Recovering|Outdoor Enclosure
+WR-0008|Reitumetse|Cape Cobra|7|5|Critical|Intensive Care Unit
+WR-0009|Zanele|Banded Mongoose|2|44|Stable|Recovery Ward
+WR-0010|Karabo|Blue Crane|11|88|Release-Ready|Pre-Release Camp
+WR-0011|Sizwe|Bushbaby|3|60|Recovering|Outdoor Enclosure
+WR-0012|Palesa|Ground Pangolin|9|39|Serious|High-Dependency Ward
