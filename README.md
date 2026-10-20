@@ -1,96 +1,122 @@
-﻿Baobab Ridge Wildlife Reserve – Animal Recovery System
-A C# Windows Forms application for recording and tracking rescued animals, their recovery scores, clinical status, and housing unit. The source project uses .NET Framework 4.7.2 and the existing namespace boabab_ridge_wildlife_reserve (spelled that way in the original solution).
+Boabab Ridge Wildlife Reserve
+
+Overview
+
+Boabab Ridge Wildlife Reserve is a C# Windows Forms application developed in Visual Studio. The project is designed to support wildlife reserve operations through a desktop-based user interface and structured application functionality.
+
 Features
-	●	Add: Enter a unique animal ID, name, species, age and recovery score. Status and housing unit are calculated automatically from the recovery score.
-	●	View: Read animal records from animals.txt and display valid entries in a read-only grid.
-	●	Update: Select or find an animal and save changed details while retaining its ID.
-	●	Delete: Remove an animal after a Yes/No confirmation.
-	●	Summary: View the total number of animals, average age, average recovery score and counts per status.
-	●	Export: Write the current summary to summary.txt next to the application executable.
-	●	Error handling: Report missing-file, permission and other I/O problems without displaying a crash.
-Technology and file storage
-	●	C# Windows Forms, .NET Framework 4.7.2, Visual Studio
-	●	Local UTF-8 pipe-delimited text files (no database)
-	●	One record per line in animals.txt:
-ID|Name|Species|Age|RecoveryScore|Status|HousingUnit
-Example: WR-0001|Kopano|Cape Fox|3|14|Critical|Intensive Care Unit
-	●	IDs use WR- followed by four digits and must be unique. Names and species must be 1–30 characters and cannot contain |. Age and score must be whole numbers from 0 through 100.
-Recovery score classification
 
-|Recovery score|Status       |Housing unit        |
+* Windows Forms graphical user interface.
+* C# application logic.
+* File error handling.
+* Summary report functionality.
+* Database integration, where configured.
 
-|--------------|-------------|--------------------|
+Technologies Used
 
-|0–19          |Critical     |Intensive Care Unit |
+* Programming Language: C#
+* Framework: .NET Windows Forms
+* IDE: Microsoft Visual Studio
+* Version Control: Git and GitHub
+* Database: Configure according to the project’s database implementation.
 
-|20–39         |Serious      |High-Dependency Ward|
+Project Structure
 
-|40–59         |Stable       |Recovery Ward       |
+boabab-ridge-wildlife-reserve/
+├── Program.cs
+├── Form1.cs
+├── Form1.Designer.cs
+├── FileErrorHandler.cs
+├── [Database files/configuration]
+└── README.md
 
-|60–79         |Recovering   |Outdoor Enclosure   |
+Note: The structure above is illustrative. Your actual repository may contain additional files and folders.
 
-|80–100        |Release-Ready|Pre-Release Camp    |
-The classification is defined in Animal.ClassifyAnimal and should not be duplicated elsewhere.
-Build and run
-	1.	Open boabab-ridge-wildlife-reserve.sln in Visual Studio with the .NET desktop development workload and .NET Framework 4.7.2 targeting pack installed.
-	2.	Confirm that AnimalFileReader.cs, AnimalFileWriter.cs, SummaryReport.cs, FileErrorHandler.cs, and Form1.Summary.cs are included in the .csproj (the uploaded project originally omits the reader/writer).
-	3.	Select animals.txt in Solution Explorer → Properties → Copy to Output Directory → Copy if newer.
-	4.	Confirm all project files use compatible Animal types. Member 2 must ensure their final AnimalFileReader.cs compiles against Animal.cs before integration.
-	5.	Add InitializeSummaryFeature(); immediately below InitializeComponent(); in Form1’s constructor.
-	6.	Start debugging with F5. The app uses animals.txt beside the running .exe (usually bin/Debug).
-	7.	Click View Summary to preview, or Export Summary to write summary.txt next to the .exe.
-> `summary.txt` formatting in this package is a **proposed layout**. Check the assignment/rubric and adjust `SummaryReport.Create()` to match any exact prescribed line labels, headings or blank lines.
-Example summary for the original 12-record dataset
+Prerequisites
 
-BAOBAB RIDGE WILDLIFE RESERVE
+Before running the application, ensure you have:
 
-ANIMAL RECOVERY SUMMARY REPORT
+* Microsoft Visual Studio installed.
+* The .NET SDK or targeting pack required by the project.
+* Git installed if cloning the repository.
+* Access to the configured database, if required.
 
---------------------------------
+Getting Started
 
-Total Animals: 12
+1. Clone the repository
 
-Average Age: 5.08
+Open a terminal and run:
 
-Average Recovery Score: 49.75
+git clone <YOUR-GITHUB-REPOSITORY-URL>
 
-ANIMALS BY STATUS
+Navigate into the project folder:
 
-Critical: 2
+cd boabab-ridge-wildlife-reserve
 
-Serious: 3
+2. Open the project
 
-Stable: 2
+1. Open Microsoft Visual Studio.
+2. Select Open a project or solution.
+3. Select the project’s .sln file, or open the .csproj file if no solution file exists.
+4. Allow Visual Studio to restore the required dependencies.
 
-Recovering: 3
+3. Configure the database
 
-Release-Ready: 2
-If no valid records exist, the total and counts are zero and averages display 0.00 (not NaN or a division-by-zero error). Lines that the file reader flags as malformed or duplicate are omitted from the calculations and a warning appears.
-Team responsibilities / Git
+If the application uses a database, ensure the database exists and that the connection string is configured correctly. Apply any required database scripts or migrations before running the application.
 
-|Team member|Feature branch          |Responsibility                                                                                              |
+4. Build the application
 
-|-----------|------------------------|------------------------------------------------------------------------------------------------------------|
+In Visual Studio, select:
 
-|1          |`feature/add-animal`    |Add form, validation, animal classification and append                                                      |
+Build → Build Solution
 
-|2          |`feature/view-animals`  |Startup file loading, error-tolerant reading, read-only grid and starter data                               |
+Resolve any build errors before proceeding.
 
-|3          |`feature/update-delete` |Selection/search, edit mode, update and delete                                                              |
+5. Run the application
 
-|4          |`feature/summary-report`|Summaries, `summary.txt` export, reusable file error handling, README, integration and repository governance|
-Make pull requests into main. Review and test each feature before merge. Member 4 should resolve integration conflicts, verify paths and confirm the final solution builds.
-Manual tests before submission
-	●	Launch with 12 valid records; check the example totals, averages and five status counts.
-	●	Add one valid animal; re-run the report and confirm the total increases.
-	●	Change an animal’s recovery score; verify that both classification and summary counts update.
-	●	Delete an animal; verify that the total and counts decrease.
-	●	Empty source file: total 0, averages 0.00, no divide-by-zero.
-	●	Malformed/duplicate line: skipped, with a warning; no crash.
-	●	Missing file: error message; do not export a misleading empty report.
-	●	Read-only/inaccessible output location: error message; no success message.
-	●	Close and reopen: records remain in the file.
-	●	Export twice: file is regenerated from the current records, not appended to.
+Once the build succeeds:
+
+* Set the Windows Forms project as the startup project.
+* Press F5 to run with debugging, or Ctrl + F5 to run without debugging.
+
+Troubleshooting
+
+Build errors: Check that all referenced classes, methods, namespaces, and dependencies exist and are correctly named.
+
+Database connection errors: Verify the connection string, database availability, and permissions.
+
+Missing files: Ensure all required source files are included in the project and committed to GitHub.
+
+Application does not start: Confirm that the correct project is selected as the startup project and that the solution builds successfully.
+
+Development
+
+Contributions and improvements should follow these steps:
+
+1. Create or switch to an appropriate Git branch.
+2. Make the required code changes.
+3. Build and test the application.
+4. Commit the changes with a descriptive message.
+5. Push the branch to GitHub and create a pull request if required.
+
+Version Control
+
+Example Git commands:
+
+git status
+git add .
+git commit -m "Update wildlife reserve application"
+git push origin feature/summary-report
+
+License
+
+No license has been specified yet. Add a suitable license if the project will be distributed or made publicly available.
+
+⸻
+
+Project: Boabab Ridge Wildlife Reserve
+Application Type: C# Windows Forms Desktop Application
+Development Environment: Microsoft Visual Studio
 
 
  
