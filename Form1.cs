@@ -18,6 +18,7 @@ namespace boabab_ridge_wildlife_reserve
         public Form1()
         {
             InitializeComponent();
+            InitializeSummaryFeature();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

@@ -16,6 +16,7 @@ namespace boabab_ridge_wildlife_reserve
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.ThreadException += (sender, args) => FileErrorHandler.Show("complete the requested action", args.Exception);
             Application.Run(new Form1());
         }
     }
