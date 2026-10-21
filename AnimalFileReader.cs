@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using boabab_ridge_wildlife_reserve;
 
 namespace BaobabRidge
 {
@@ -107,16 +108,8 @@ namespace BaobabRidge
                 return false;
             }
 
-            animal = new Animal
-            {
-                Id = id,
-                Name = name,
-                Species = species,
-                Age = age,
-                Score = score,
-                Status = status,
-                HousingUnit = housing
-            };
+            // Status and HousingUnit are worked out by the Animal constructor from the score
+            animal = new Animal(id, name, species, age, score);
             return true;
         }
 
@@ -130,7 +123,7 @@ namespace BaobabRidge
 
             for (int i = 3; i < 7; i++)
             {
-                if (!char.IsAsciiDigit(id[i]))
+                if (id[i] < '0' || id[i] > '9')
                 {
                     return false;
                 }
@@ -151,7 +144,7 @@ namespace BaobabRidge
 
             foreach (char c in text)
             {
-                if (!char.IsAsciiDigit(c))
+                if (c < '0' || c > '9')
                 {
                     return false;
                 }
