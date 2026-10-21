@@ -54,6 +54,11 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="FileErrorHandler.cs" />
+    <Compile Include="AnimalFileReader.cs" />
+    <Compile Include="AnimalFileWriter.cs" />
+    <Compile Include="Properties\Form1.Summary.cs" />
+    <Compile Include="Properties\SummaryReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
