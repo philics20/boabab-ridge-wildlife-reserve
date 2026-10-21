@@ -1,40 +1,68 @@
-﻿private void btnExportSummary_Click(object sender, EventArgs e)
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using System.Windows.Forms;
+using BaobabRidge;
 
+namespace boabab_ridge_wildlife_reserve
 {
-
-    FileErrorHandler.TryRun("export the summary report", () =>
-
+    public partial class Form1
     {
+        private void InitializeSummaryFeature()
+        {
+            Button exportButton = new Button();
+            exportButton.Text = "Export Summary";
+            exportButton.AutoSize = true;
+            exportButton.Location = new System.Drawing.Point(10, 10);
+            exportButton.Click += btnExportSummary_Click;
+            Controls.Add(exportButton);
+            exportButton.BringToFront();
+        }
 
-        string report =
+        private List<Animal> ReadCurrentAnimals()
+        {
+            return AnimalFileReader.ReadAll().Animals;
+        }
 
-            SummaryReport.Create(ReadCurrentAnimals());
+        private void btnExportSummary_Click(object sender, EventArgs e)
 
-        string path = Path.Combine(
+        {
 
-            AppDomain.CurrentDomain.BaseDirectory,
+            FileErrorHandler.TryRun("export the summary report", () =>
 
-            "summary.txt");
+            {
 
-        File.WriteAllText(
+                string report =
 
-            path,
+                    SummaryReport.Create(ReadCurrentAnimals());
 
-            report,
+                string path = Path.Combine(
 
-            new UTF8Encoding(false));
+                    AppDomain.CurrentDomain.BaseDirectory,
 
-        MessageBox.Show(
+                    "summary.txt");
 
-            "Summary saved successfully to:\n" + path,
+                File.WriteAllText(
 
-            "Export Complete",
+                    path,
 
-            MessageBoxButtons.OK,
+                    report,
 
-            MessageBoxIcon.Information);
+                    new UTF8Encoding(false));
 
-    });
+                MessageBox.Show(
 
+                    "Summary saved successfully to:\n" + path,
+
+                    "Export Complete",
+
+                    MessageBoxButtons.OK,
+
+                    MessageBoxIcon.Information);
+
+            });
+
+        }
+    }
 }
-
